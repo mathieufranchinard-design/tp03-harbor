@@ -48,6 +48,12 @@ jobs:
       - name: Build Docker image
         run: docker build -t myapp:latest .
 
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.5.0
+
+      - name: Build Docker image
+        run: docker build -t myapp:latest .
+
       - name: Cosign keyless sign
         env:
           COSIGN_EXPERIMENTAL: 1
