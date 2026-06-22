@@ -43,7 +43,8 @@ jobs:
         with:
           target: 'http://www.example.com'
           fail_action: false
-          artifact_name: 'zap-report'
+          artifact_name: ' '
+          allow_issue_writing: false
       - name: Build Docker image
         run: docker build -t myapp:latest .
 
