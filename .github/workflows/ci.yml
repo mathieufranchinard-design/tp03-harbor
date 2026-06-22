@@ -36,3 +36,17 @@ jobs:
           scan-ref: .
           exit-code: 1
           severity: CRITICAL
+- name: ZAP Baseline Scan (DAST)
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          target: 'http://localhost:30002'
+          fail_action: false
+
+      - name: Build Docker image
+        run: docker build -t myapp:latest .
+
+      - name: Cosign keyless sign
+        env:
+          COSIGN_EXPERIMENTAL: 1
+        run: |
+          cosign sign --yes myapp:latest
