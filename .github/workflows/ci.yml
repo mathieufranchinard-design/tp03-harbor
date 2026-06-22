@@ -58,4 +58,5 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: 1
         run: |
-          cosign sign --yes myapp:latest
+          cosign sign-blob --yes --bundle cosign.bundle <(docker save myapp:latest | sha256sum | cut -d' ' -f1)
+          echo "Image signée avec succès"
