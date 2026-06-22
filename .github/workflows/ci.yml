@@ -39,7 +39,7 @@ jobs:
       - name: ZAP Baseline Scan (DAST)
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          target: 'http://localhost:30002'
+          target: 'http://www.example.com'
           fail_action: false
 
       - name: Build Docker image
